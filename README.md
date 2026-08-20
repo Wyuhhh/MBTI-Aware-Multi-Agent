@@ -1,173 +1,120 @@
-# MBTI-Aware Multi-Agent System
+# MBTI Multi-Agent Web Application
 
-把 MBTI 16 种人格量表投射到 LLM Agent 的行为空间，让同一底座 LLM 通过不同 Prompt 模板扮演16 种"性格 Agent"，由一组性格互补的 Agent 互相辩论、投票、仲裁，输出带人格多样性的答案。
+MBTI人格多智能体辩论系统的完整Web前后端应用。
 
-## 核心特性
+## 核心思想
 
-- **16套MBTI性格Prompt模板**：每套包含性格描述、Few-shot锚定、性格校验问题
-- **智能组合选择器**：根据任务类型自动选择合适的Agent组合
-- **多轮辩论机制**：Agent之间交叉挑战，促进深度思考
-- **置信度投票**：基于置信度的加权投票机制
-- **多维仲裁器**：T-F/N-S/J-P冲突自动分诊处理
+**同质Agent的群智 ≠ 真群智** — 3个一样的GPT-4互相challenge，本质还是GPT-4的单一视角自我强化。
 
-## 安装
+**异质Agent才能产生认知冲突** — 本系统通过"知识约束"机制（而非简单的人格描述）为不同MBTI Agent注入差异化知识：
+- INTJ Agent 被强制注入战略博弈知识
+- ESFP Agent 被强制注入用户共情知识
+- ISTJ Agent 被强制注入规范执行知识
 
-```bash
-pip install -r requirements.txt
-```
+使Agent在同一问题上天然存在**信息不对称**，产生真实的认知冲突与视角差异。
+
+## 核心创新
+
+1. **知识约束机制**：通过为不同人格Agent注入差异化知识（战略博弈/用户共情/技术细节等），而非仅依赖人格描述，产生真实认知差异
+2. **智能组合选择器**：根据任务类型（职业规划/伦理困境/技术方案等）自动选择最优Agent组合策略，标注认知维度冲突
+3. **多维辩论机制**：初始陈述 → 交叉挑战 → 置信度更新 → 投票，T-F/N-S/J-P冲突自动分诊处理
+4. **DualJudge评估体系**：QualityJudge（质量评判）+ ComparativeJudge（对比评判）+ Krippendorff α系数（评委一致性）
 
 ## 快速开始
 
-### 使用Mock客户端（无需API密钥）
-
-```python
-from mbti_multi_agent import create_system
-
-# 创建系统
-system = create_system(provider="mock")
-
-# 解决问题
-result = system.solve(
-    query="我应该如何选择职业道路？",
-    auto_task_detection=True,
-)
-
-print(result["consensus"])
-```
-
-### 使用OpenAI GPT
-
-```python
-from mbti_multi_agent import MBTIMultiAgentSystem
-from mbti_multi_agent.llm import OpenAIClient
-
-# 创建LLM客户端
-client = OpenAIClient(api_key="your-api-key", model="gpt-4")
-
-# 创建系统
-system = MBTIMultiAgentSystem(llm_client=client)
-
-# 解决问题
-result = system.solve(
-    query="是否应该为了高薪去一个不喜欢的行业？",
-    task_type="ethical_dilemma",
-)
-
-print(result["consensus"])
-```
-
-## 架构
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      User Query                             │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   Agent组合选择器                            │
-│  (Task Type → MBTI组合 mapping)                             │
-└─────────────────────────────────────────────────────────────┘
-                              │
-              ┌───────────────┼───────────────┐
-              ▼               ▼               ▼
-        ┌──────────┐    ┌──────────┐    ┌──────────┐
-        │ Agent 1  │    │ Agent 2  │    │ Agent 3  │
-        │ (e.g.,   │    │ (e.g.,   │    │ (e.g.,   │
-        │  INTJ)   │    │  ENFP)   │    │  ISTJ)   │
-        └──────────┘    └──────────┘    └──────────┘
-              │               │               │
-              └───────────────┼───────────────┘
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   辩论 + 投票机制                            │
-│  (多轮challenge → 置信度更新 → 投票)                         │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     多维仲裁器                               │
-│  (T-F/N-S/J-P 维度冲突分诊)                                  │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## 16种MBTI人格类型
-
-| 类型 | 名称 | 核心特质 |
-|------|------|---------|
-| INTJ | 战略家 | 逻辑驱动，擅长长远规划 |
-| INTP | 逻辑学家 | 抽象分析，追求理论完备 |
-| ENTJ | 指挥官 | 果断决策，驱动行动 |
-| ENTP | 辩论家 | 辩证思维，挑战现状 |
-| INFJ | 提倡者 | 共情洞察，关注价值 |
-| INFP | 调停者 | 理想主义，忠于内心 |
-| ENFJ | 主人公 | 激励人心，推动共识 |
-| ENFP | 竞选者 | 热情创造，探索可能 |
-| ISTJ | 检查员 | 务实可靠，遵循规则 |
-| ISFJ | 守护者 | 忠诚奉献，关注细节 |
-| ESTJ | 执行者 | 高效务实，维护秩序 |
-| ESFJ | 提供者 | 热情助人，构建和谐 |
-| ISTP | 手艺人 | 灵活务实，擅长技术 |
-| ISFP | 艺术家 | 敏感审美，珍惜自由 |
-| ESTP | 企业家 | 冒险实践，把握当下 |
-| ESFP | 表演者 | 热情社交，享受生活 |
-
-## Agent组合策略
-
-| 任务类型 | Agent组合 | 适用场景 |
-|---------|----------|---------|
-| career_planning | INTJ + ENFP + ISTJ | 职业规划、岗位选择 |
-| ethical_dilemma | INFJ + ESTP + INTP | 道德判断、价值取舍 |
-| product_decision | ENTP + ISTJ + ESFJ | 产品功能、商业决策 |
-| tech_solution | INTP + ISTJ + ENTJ | 技术选型、系统设计 |
-| creative_ideation | ENFP + ENTP + ESFP | 头脑风暴、创意生成 |
-| risk_assessment | INTJ + ISTJ + ESTP | 风险分析、预案规划 |
-| team_coordination | ENFJ + ESFJ + ISTJ | 团队管理、人员协调 |
-| strategic_planning | INTJ + ENTJ + INFJ | 长期规划、战略制定 |
-
-## 仲裁维度
-
-| 冲突维度 | 冲突双方 | 仲裁策略 |
-|---------|---------|---------|
-| T-F | Thinking vs Feeling | 逻辑Agent给论证链，感性Agent给共情例证，合并输出 |
-| N-S | iNtuition vs Sensing | 实感派先查证据，直觉派给推演，最后整合 |
-| J-P | Judging vs Perceiving | 判断派给确定性结论，感知派给开放选项，并列呈现 |
-
-## 运行测试
+### 方式1: Docker部署（推荐）
 
 ```bash
-pytest tests/ -v
+cd mbti-multi-agent-web
+
+# 设置API Key（可选，有默认值）
+export MINIMAX_API_KEY="your-key"
+
+# 启动所有服务
+docker-compose up -d
+
+# 访问
+# 前端: http://localhost:3000
+# 后端API: http://localhost:8000
+# API文档: http://localhost:8000/docs
 ```
 
-## 项目结构
+### 方式2: 本地开发
 
-```
-mbti-multi-agent/
-├── README.md
-├── requirements.txt
-├── config/
-│   └── agent_combinations.yaml    # 任务类型→MBTI组合映射
-├── src/
-│   ├── __init__.py
-│   ├── main.py                    # 主入口
-│   ├── mbti_prompts/
-│   │   └── personalities.py       # 16套MBTI Prompt模板
-│   ├── agent/
-│   │   ├── base.py                # 基类MBTI Agent
-│   │   ├── combinator.py          # Agent组合选择器
-│   │   ├── debate.py              # 辩论机制
-│   │   ├── voter.py               # 投票机制
-│   │   └── arbitrator.py          # 多维仲裁器
-│   └── llm/
-│       └── client.py              # LLM调用封装
-├── tests/
-│   ├── test_personalities.py
-│   ├── test_debate.py
-│   └── test_arbitrator.py
-└── examples/
-    └── demo.py                    # 使用示例
+**后端:**
+```bash
+cd backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --port 8000
 ```
 
-## License
+**前端:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-MIT
+## 功能
+
+- [x] 输入问题，获取多Agent辩论结果
+- [x] 选择不同的Agent组合策略（标注认知维度冲突）
+- [x] 实时查看辩论过程和置信度
+- [x] 查看16种MBTI Agent类型介绍
+- [x] AI模型选择（MiniMax/GPT-4/Claude/Mock）
+- [x] API配置面板（可自定义模型API）
+- [x] 多维评估指标（置信度、观点分歧度、Krippendorff α）
+- [x] 流式响应（SSE）
+- [ ] 历史记录（开发中）
+
+## API接口
+
+| 方法 | 路径 | 说明 |
+|-----|------|------|
+| GET | `/` | API信息 |
+| GET | `/agents` | 获取所有Agent类型 |
+| GET | `/combinations` | 获取Agent组合策略（含认知维度） |
+| POST | `/solve` | 解决问题（支持X-API-Config自定义API） |
+| POST | `/solve/stream` | 流式解决问题（SSE） |
+| GET | `/tasks/{id}` | 获取任务状态 |
+| GET | `/health` | 健康检查 |
+
+### 自定义API配置
+
+通过 `X-API-Config` header传递JSON配置：
+
+```json
+{
+  "provider": "minimax",
+  "apiKey": "your-key",
+  "baseUrl": "http://...",
+  "model": "MiniMax-M2.7"
+}
+```
+
+## 技术栈
+
+- **后端**: FastAPI + Python 3.11
+- **前端**: React + Vite + TypeScript + TailwindCSS
+- **API**: REST + Server-Sent Events
+
+## 目录结构
+
+```
+mbti-multi-agent-web/
+├── backend/
+│   ├── app/
+│   │   └── main.py          # FastAPI入口
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx          # 主组件
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── Dockerfile
+├── docker-compose.yml
+└── README.md
+```
