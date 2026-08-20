@@ -1,0 +1,481 @@
+{
+  "timestamp": "2026-08-17T15:43:29.492563",
+  "total_questions": 5,
+  "categories": [
+    "tech_solution",
+    "creative_ideation",
+    "strategic_planning",
+    "career_planning",
+    "product_decision",
+    "team_coordination",
+    "ethical_dilemma",
+    "risk_assessment"
+  ],
+  "category_summaries": [
+    {
+      "category": "tech_solution",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "creative_ideation",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "strategic_planning",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "career_planning",
+      "num_questions": 5,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0.5,
+        "random_mbti": 0.5,
+        "single_INTJ": 0.5,
+        "oracle": 0.5
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0.5,
+        "random_mbti": 0.5,
+        "single_INTJ": 0.5,
+        "oracle": 0.5
+      }
+    },
+    {
+      "category": "product_decision",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "team_coordination",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "ethical_dilemma",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    },
+    {
+      "category": "risk_assessment",
+      "num_questions": 0,
+      "baseline_scores": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      },
+      "baseline_confidences": {
+        "homogeneous_INTJ": 0,
+        "random_mbti": 0,
+        "single_INTJ": 0,
+        "oracle": 0
+      }
+    }
+  ],
+  "overall_comparison": {
+    "total_time_seconds": 0.0030002593994140625,
+    "questions_per_second": 1666.5225683407502,
+    "baseline_avg_scores": {
+      "homogeneous_INTJ": 0.0625,
+      "random_mbti": 0.0625,
+      "single_INTJ": 0.0625,
+      "oracle": 0.0625
+    }
+  },
+  "question_results": [
+    {
+      "question_id": "CP001",
+      "category": "career_planning",
+      "question": "我应该在考研和工作之间如何选择？",
+      "timestamp": "2026-08-17T15:43:29.490567",
+      "baseline_results": {
+        "homogeneous_INTJ": {
+          "name": "homogeneous_INTJ",
+          "agents_used": [
+            "INTJ",
+            "INTJ",
+            "INTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "random_mbti": {
+          "name": "random_mbti",
+          "agents_used": [
+            "ENTP",
+            "INTJ",
+            "ESFJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "single_INTJ": {
+          "name": "single_INTJ",
+          "agents_used": [
+            "INTJ"
+          ],
+          "debate_rounds": 0,
+          "final_consensus": "Mock response",
+          "confidence": 0.5,
+          "metadata": {
+            "single_agent": true
+          }
+        },
+        "oracle": {
+          "name": "oracle",
+          "agents_used": [
+            "INTJ",
+            "ENFP",
+            "ISTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        }
+      }
+    },
+    {
+      "question_id": "CP002",
+      "category": "career_planning",
+      "question": "转行到AI领域是否明智，需要准备什么？",
+      "timestamp": "2026-08-17T15:43:29.491572",
+      "baseline_results": {
+        "homogeneous_INTJ": {
+          "name": "homogeneous_INTJ",
+          "agents_used": [
+            "INTJ",
+            "INTJ",
+            "INTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "random_mbti": {
+          "name": "random_mbti",
+          "agents_used": [
+            "ENTP",
+            "INTJ",
+            "ESFJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "single_INTJ": {
+          "name": "single_INTJ",
+          "agents_used": [
+            "INTJ"
+          ],
+          "debate_rounds": 0,
+          "final_consensus": "Mock response",
+          "confidence": 0.5,
+          "metadata": {
+            "single_agent": true
+          }
+        },
+        "oracle": {
+          "name": "oracle",
+          "agents_used": [
+            "INTJ",
+            "ENFP",
+            "ISTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        }
+      }
+    },
+    {
+      "question_id": "CP003",
+      "category": "career_planning",
+      "question": "大公司螺丝钉 vs 小公司核心员工，如何选择？",
+      "timestamp": "2026-08-17T15:43:29.491572",
+      "baseline_results": {
+        "homogeneous_INTJ": {
+          "name": "homogeneous_INTJ",
+          "agents_used": [
+            "INTJ",
+            "INTJ",
+            "INTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "random_mbti": {
+          "name": "random_mbti",
+          "agents_used": [
+            "ENTP",
+            "INTJ",
+            "ESFJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "single_INTJ": {
+          "name": "single_INTJ",
+          "agents_used": [
+            "INTJ"
+          ],
+          "debate_rounds": 0,
+          "final_consensus": "Mock response",
+          "confidence": 0.5,
+          "metadata": {
+            "single_agent": true
+          }
+        },
+        "oracle": {
+          "name": "oracle",
+          "agents_used": [
+            "INTJ",
+            "ENFP",
+            "ISTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        }
+      }
+    },
+    {
+      "question_id": "CP004",
+      "category": "career_planning",
+      "question": "35岁程序员应该转管理还是继续深耕技术？",
+      "timestamp": "2026-08-17T15:43:29.492563",
+      "baseline_results": {
+        "homogeneous_INTJ": {
+          "name": "homogeneous_INTJ",
+          "agents_used": [
+            "INTJ",
+            "INTJ",
+            "INTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "random_mbti": {
+          "name": "random_mbti",
+          "agents_used": [
+            "ENTP",
+            "INTJ",
+            "ESFJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "single_INTJ": {
+          "name": "single_INTJ",
+          "agents_used": [
+            "INTJ"
+          ],
+          "debate_rounds": 0,
+          "final_consensus": "Mock response",
+          "confidence": 0.5,
+          "metadata": {
+            "single_agent": true
+          }
+        },
+        "oracle": {
+          "name": "oracle",
+          "agents_used": [
+            "INTJ",
+            "ENFP",
+            "ISTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        }
+      }
+    },
+    {
+      "question_id": "CP005",
+      "category": "career_planning",
+      "question": "如何判断一家创业公司是否值得加入？",
+      "timestamp": "2026-08-17T15:43:29.492563",
+      "baseline_results": {
+        "homogeneous_INTJ": {
+          "name": "homogeneous_INTJ",
+          "agents_used": [
+            "INTJ",
+            "INTJ",
+            "INTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "random_mbti": {
+          "name": "random_mbti",
+          "agents_used": [
+            "ENTP",
+            "INTJ",
+            "ESFJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        },
+        "single_INTJ": {
+          "name": "single_INTJ",
+          "agents_used": [
+            "INTJ"
+          ],
+          "debate_rounds": 0,
+          "final_consensus": "Mock response",
+          "confidence": 0.5,
+          "metadata": {
+            "single_agent": true
+          }
+        },
+        "oracle": {
+          "name": "oracle",
+          "agents_used": [
+            "INTJ",
+            "ENFP",
+            "ISTJ"
+          ],
+          "debate_rounds": 2,
+          "final_consensus": "Mock response\n\n---\n\nMock response\n\n---\n\nMock response",
+          "confidence": 0.5,
+          "metadata": {
+            "num_messages": 15,
+            "convergence_achieved": true
+          }
+        }
+      }
+    }
+  ]
+}
